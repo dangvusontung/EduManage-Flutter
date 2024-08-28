@@ -43,3 +43,15 @@ This project follows a clean architecture structure. Here's a guide on how to or
    We have decided not to include an infrastructure layer at this time, as the current project scope doesn't require additional abstraction beyond the data layer. If the project grows in complexity and requires platform-specific implementations or third-party integrations, we may consider adding this layer in the future.
 
 When adding new features or modifying existing ones, please follow this structure to maintain a clean and organized codebase.
+
+## Dependencies
+
+This project uses several key dependencies to enhance its functionality and maintainability:
+
+- bloc (^8.1.0): A state management library that helps implement the BLoC (Business Logic Component) design pattern.
+- get_it (^7.2.0): A simple Service Locator for dependency injection and inversion of control.
+- injectable (^1.5.3): A convenient code generator for get_it, simplifying the setup of dependency injection.
+- freezed_annotation (^2.2.0): Annotations for the freezed code-generation package, used for creating immutable model classes.
+- dio (^5.1.2): A powerful HTTP client for Dart, used for making API requests.
+
+These dependencies work together to provide a robust architecture for state management, dependency injection, and API communication in the EduManage-Flutter project.
