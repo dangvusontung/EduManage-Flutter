@@ -1,0 +1,4 @@
+enum RankingViewSortType {
+  byClass,
+  byCourse 
+}

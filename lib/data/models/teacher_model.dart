@@ -1,7 +1,16 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:isar/isar.dart';
-import 'person_model.dart';
+
+part 'teacher_model.g.dart';
 
 @collection
-class TeacherModel extends PersonModel {
-  TeacherModel(String name, DateTime dateOfBirth) : super(name, dateOfBirth);
+@JsonSerializable()
+class TeacherModel {
+    
+    Id id = Isar.autoIncrement;
+  
+    String? name;
+    DateTime? dateOfBirth;
+  
+    TeacherModel(this.name, this.dateOfBirth);  
 }

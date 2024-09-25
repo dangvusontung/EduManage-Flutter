@@ -1,7 +1,14 @@
 import 'package:isar/isar.dart';
-import 'person_model.dart';
+
+part 'student_model.g.dart';
 
 @collection
-class StudentModel extends PersonModel {
-  StudentModel(String name, DateTime dateOfBirth) : super(name, dateOfBirth);
+class StudentModel {
+  
+  Id id = Isar.autoIncrement;
+
+  String? name;
+  DateTime? dateOfBirth;
+
+  StudentModel(this.name, this.dateOfBirth);
 }
