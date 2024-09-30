@@ -1,7 +1,9 @@
+import 'package:auto_route/annotations.dart';
 import 'package:edu_manager/presentation/class_view/bloc/class_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+@RoutePage()
 class ClassView extends StatefulWidget {
 
   @override

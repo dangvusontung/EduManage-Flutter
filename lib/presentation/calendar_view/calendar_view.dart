@@ -1,13 +1,15 @@
+import 'package:auto_route/annotations.dart';
 import 'package:edu_manager/di/dependency_configuration.dart';
 import 'package:edu_manager/presentation/calendar_view/bloc/calendar_view_bloc.dart';
-import 'package:edu_manager/presentation/calendar_view/calendar_view_model.dart';
+import 'package:edu_manager/presentation/calendar_view/models/calendar_view_model.dart';
 import 'package:edu_manager/presentation/calendar_view/components/calendar_day_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:get_it/get_it.dart';
 
+@RoutePage()
 class CalendarView extends StatefulWidget {
+  const CalendarView({super.key});
+
   @override
   State<CalendarView> createState() => _CalendarState();
 }
@@ -47,14 +49,16 @@ class _CalendarState extends State<CalendarView> {
     listEvents.sort((a, b) => a.compareTo(b));
 
     return Padding(
-      padding: const EdgeInsets.only(bottom: 100),
-      child: ListView.builder(
+      padding: const EdgeInsets.all(16),
+      child: ListView.separated(
+        physics: const BouncingScrollPhysics(),
         itemCount: listEvents.length,
         itemBuilder: (context, index) {
           final date = listEvents[index];
           final events = viewModel.events[date] ?? [];
           return CalendarDayItem(date: date, events: events);
         },
+        separatorBuilder: (context, index) => Container(height: 1, color: Colors.grey,),
       ),
     );
   }

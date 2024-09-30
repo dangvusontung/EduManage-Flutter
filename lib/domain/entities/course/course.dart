@@ -1,17 +1,20 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:edu_manager/domain/entities/course/course_milestone.dart';
+import 'package:edu_manager/domain/entities/subject/subject.dart';
 
-part 'course.freezed.dart';
-part 'course.g.dart';
+class Course {
+  final String id;
+  final String name;
+  final Subject subject;
+  final String description;
+  final String imageUrl;
+  final List<CourseMileStone> milestones;
 
-@freezed
-class Course with _$Course {
-  const factory Course({
-    int? id,
-    required String name,
-    required String description,
-    required int teacherId,
-    required int studentId,
-  }) = _Course;
-
-  factory Course.fromJson(Map<String, dynamic> json) => _$CourseFromJson(json);
+  Course({
+    required this.id,
+    required this.name,
+    required this.subject,
+    required this.description,
+    required this.imageUrl,
+    required this.milestones,
+  });
 }

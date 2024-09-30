@@ -1,4 +1,5 @@
 import 'package:edu_manager/domain/entities/class/class.dart';
+import 'package:edu_manager/domain/entities/subject/subject.dart';
 import 'package:edu_manager/utils/date_formatter.dart';
 import 'package:edu_manager/utils/extensions/date_extension.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class ClassItemView extends StatelessWidget {
     return Column(
       children: [
         Text(classItem.name),
-        Text(_subjectName(classItem.subjectId)),
+        Text(_subjectName(classItem.subject)),
         Row(
           children: [
             const Icon(Icons.person),
@@ -39,7 +40,16 @@ class ClassItemView extends StatelessWidget {
     );
   }
 
-  String _subjectName(int subjectId) {
-    return 'Subject Name';
+  String _subjectName(Subject subject) {
+    switch (subject) {
+      case Subject.algebra:
+        return 'Algebra';
+      case Subject.literature:
+        return 'Literature';
+      case Subject.chemistry:
+        return 'Chemistry';
+      default:
+        return 'Unknown';
+    }
   }
 }

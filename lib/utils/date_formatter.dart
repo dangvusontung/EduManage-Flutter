@@ -5,6 +5,7 @@ enum DateFormatStrategy {
   fullDate,
   hhMM,
   dayInWeek,
+  dayInWeekShort,
   monthAndYear,
   fullDateTime,
   iso8601,
@@ -13,7 +14,8 @@ enum DateFormatStrategy {
 }
 
 class DateFormatterManager {
-  static final DateFormatterManager _instance = DateFormatterManager._internal();
+  static final DateFormatterManager _instance =
+      DateFormatterManager._internal();
   final Map<DateFormatStrategy, DateFormat> _cache = {};
 
   factory DateFormatterManager() {
@@ -42,6 +44,8 @@ class DateFormatterManager {
         return DateFormat.Hm();
       case DateFormatStrategy.dayInWeek:
         return DateFormat.EEEE();
+      case DateFormatStrategy.dayInWeekShort:
+        return DateFormat.E();
       case DateFormatStrategy.monthAndYear:
         return DateFormat.yMMMM();
       case DateFormatStrategy.fullDateTime:

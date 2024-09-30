@@ -1,4 +1,3 @@
-
 import 'package:dartz/dartz.dart';
 import 'package:edu_manager/base/app_error.dart';
 import 'package:edu_manager/domain/entities/calendar/calendar_event.dart';
@@ -13,11 +12,15 @@ class GetCalendarEventsUseCaseImpl implements GetCalendarEventsUseCase {
   GetCalendarEventsUseCaseImpl(this._calendarRepository);
 
   @override
-  Future<Either<EduError, List<CalendarEvent>>> execute(GetCalendarEventsUseCaseParams params) {
+  Future<Either<EduError, List<CalendarEvent>>> execute(
+      GetCalendarEventsUseCaseParams params) async {
     try {
-      return _calendarRepository.getCalendarEvents().then((value) => Right(value));
+      final result = await _calendarRepository.getCalendarEvents(
+          params.startDate, params.endDate);
+
+      return result.fold((error) => Left(error), (calendarEvents) => Right(calendarEvents));
     } catch (e) {
-      return Future.value(Left(EduError(e.toString())));
+      return Left(EduError('Failed to fetch calendar events'));
     }
   }
 }

@@ -1,24 +1,32 @@
+import 'package:edu_manager/domain/entities/students/student.dart';
+import 'package:edu_manager/domain/entities/subject/subject.dart';
 
-import 'package:freezed_annotation/freezed_annotation.dart';
+class Class {
+  final String id;
+  final String name;
+  final String description;
+  final Subject subject;
+  final String teacherId;
+  final String teacherName;
+  final String teacherEmail;
+  final DateTime startDate;
+  final DateTime endDate;
+  final String? locationName;
+  final String? locationId;
+  final List<Student> students;
 
-part 'class.freezed.dart';
-part 'class.g.dart';
-
-@freezed
-class Class with _$Class {
-  const factory Class({
-    required String id,
-    required String name,
-    required String description,
-    required int subjectId,
-    required String teacherId,
-    required String teacherName, 
-    required String teacherEmail,
-    required DateTime startDate,
-    required DateTime endDate,
-    String? locationName,
-    String? locationId
-  }) = _Class;
-
-  factory Class.fromJson(Map<String, dynamic> json) => _$ClassFromJson(json);
+  Class({
+    required this.id,
+    required this.name,
+    required this.description,
+    required this.subject,
+    required this.teacherId,
+    required this.teacherName,
+    required this.teacherEmail,
+    required this.startDate,
+    required this.endDate,
+    this.locationName,
+    this.locationId,
+    required this.students,
+  });
 }
